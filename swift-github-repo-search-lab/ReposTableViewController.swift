@@ -107,9 +107,7 @@ class ReposTableViewController: UITableViewController {
     }
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    print("didSelectRowAt")
     let repoName = store.repositories[indexPath.row].fullName
-    print("repoName: \(repoName)")
     self.store.toggleStarStatus(name: repoName) {
       
       var message = String()
@@ -122,11 +120,7 @@ class ReposTableViewController: UITableViewController {
       let alertController = UIAlertController(title: "Results", message: message, preferredStyle: .alert)
       
       let cancelAction = UIAlertAction(title: "Close", style: .cancel) { (action:UIAlertAction!) in
-        print("you have pressed the Cancel button");
         print("self.tableView.indexPathForSelectedRow! \(self.tableView.indexPathForSelectedRow!.row)")
-        // crash //self.tableView(tableView, willDeselectRowAt: self.tableView.indexPathForSelectedRow!)
-        // no change //self.tableView.deselectRow(at: indexPath, animated: true)
-
       }
       alertController.addAction(cancelAction)
       self.present(alertController, animated: true, completion:nil)
